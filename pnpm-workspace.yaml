@@ -1,0 +1,6 @@
+packages:
+  - ui
+  - background
+  - provider-bridge
+  - provider-bridge-shared
+  - window-provider

@@ -20,7 +20,7 @@
     "dapp"
   ],
   "scripts": {
-    "start": "run-p devtools \"dev {@}\" --",
+    "start": "echo You probably want to run `npm run dev` instead. && exit 1",
     "generate:validators": "ts-node background/generate-validators.ts",
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
@@ -34,8 +34,7 @@
     "lint:docs:fix": "prettier -w '**/*.md'",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix",
-    "test": "jest",
-    "postinstall": "patch-package"
+    "test": "jest"
   },
   "workspaces": [
     "ui",
@@ -47,12 +46,13 @@
   "dependencies": {
     "@ethersproject/providers": "5.5.3",
     "@fortawesome/fontawesome-free": "^5.15.2",
-    "@sendnodes/pokt-wallet-background": "0.0.1",
-    "@sendnodes/pokt-wallet-ui": "0.0.1",
-    "@sendnodes/provider-bridge": "0.0.1",
-    "@sendnodes/provider-bridge-shared": "0.0.1",
-    "@sendnodes/window-provider": "0.0.1",
+    "@sendnodes/pokt-wallet-background": "workspace:*",
+    "@sendnodes/pokt-wallet-ui": "workspace:*",
+    "@sendnodes/provider-bridge": "workspace:*",
+    "@sendnodes/provider-bridge-shared": "workspace:*",
+    "@sendnodes/window-provider": "workspace:*",
     "buffer": "^6.0.3",
+    "jsan": "^3.1.14",
     "react": "^17.0.2",
     "webext-options-sync": "^2.0.1",
     "webextension-polyfill": "^0.7.0"
@@ -104,13 +104,13 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm": "^7.5.6",
     "npm-run-all": "^4.1.5",
-    "patch-package": "^6.4.7",
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.0",
     "postcss-preset-env": "^7.7.0",
     "prettier": "^2.5.1",
     "process": "^0.11.10",
+    "remotedev-server": "^0.3.1",
     "size-plugin": "^2.0.2",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
@@ -127,5 +127,10 @@
   },
   "engines": {
     "node": "16"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "jsan@3.1.14": "patches/jsan@3.1.14.patch"
+    }
   }
 }
